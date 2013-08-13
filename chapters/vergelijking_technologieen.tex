@@ -1,0 +1,99 @@
+% 2 Bladijden
+\chapter{Vergelijking technologie\"en}\label{chapter:vergelijking_technologieen}
+
+% SECTION
+\section{Properties}\label{section:properties_technologieen}
+
+\subsection{Ondersteuning}
+
+\subsubsection{Development Environment en simulator}
+
+In termen van voorwaarden om van start te geraken in iOS en Android verschillen beide technologie\"en. Development in iOS is relatief gelimiteerd, Apple's IDE XCode is immers enkel beschikbaar op Mac OS platformen\cite{goadrich2011} en applicaties zoals Macincloud\footnote{\url{http://www.macincloud.com/}} waarmee een Mac services vanuit de browser kunnen worden gebruikt\cite{macincloud2013}, lijken nog niet echt op punt te staan, afgaande op eigen ervaring.
+
+Daarentegen is Android development relatief toegankelijk. Dankzij de Java virtuele machine kan Eclipse op zowat elk platform ge\"installeerd worden samen met de Android Eclipse plugin\footnote{\url{http://developer.android.com/sdk/installing/installing-adt.html}}.
+
+De Android simulator van Eclipse komt zeer log over, al zijn er kennelijk wel mogelijkheden om de performance te verbeteren\cite{stackoverflow2012}. De simulator voor iOS is wel zeer performant. Beide hebben het nadeel dat ze beperkt zijn voor het testen van bepaalde userinput; denk aan touch events, gebruik van acceleratiemeter en dergelijke\cite{goadrich2011}.
+
+
+\subsubsection{Leerproces}
+
+Voor zowel Android als iOS ligt een object-geori\"enteerde taal aan de basis, respectievelijk Java en Objective-C. Beide systemen beschikken over een uitgebreide documentatie.
+
+In \cite{frederick2012} beweert men dat je zowat alles omtrent iOS development kunt terugvinden op Stackoverflow\footnote{\url{http://stackoverflow.com/}}, in tegenstelling tot voor Android. Op basis van het aantal documenten getagged met 'iOS' en 'Android' werden respectievelijk $117,684$ en $276,882$ resultaten teruggevonden\cite{stackoverflow2013ios},\cite{stackoverflow2013android}. Dit lijkt voorgaand statement enigszins tegen te spreken, al zegt kwantiteit niet alles uiteraard.
+
+Voor beide technologie\"en bestaan er echter vele websites en blogs met goede informatie. Een opmerking die hierbij gemaakt moet worden, is dat hieronder ook veel verouderde informatie is.
+
+Afhankelijk van de achtergrond van de programmeur zal programmeren in een van beide technologie\"en effici\"enter verlopen. Al bij al is ondersteuning van het leerproces vrij gelijklopend\cite{goadrich2011}. Hoewel er veel parallellen zijn tussen iOS en Android, vergt het wel degelijk wat tijd om bijvoorbeeld iOS aan te leren, zelfs al ben je vertrouwd met Android.
+
+
+\subsubsection{Distributie}
+
+Een van de verschillen tussen beide technologie\"en is de manier waarop ze omgaan met het publiceren en distribueren van applicaties. Apple is vrij strikt in het al dan niet toelaten van applicaties op de App Store.  Dit verhindert echter niet dat er soms malafide applicaties in de app store terechtkomen\cite{knack2012}. Het inschrijven in een developerprogramma kost bovendien een redelijke som, tenzij je je via een universiteitsprogramma kan inschrijven\cite{apple2013}.
+
+Het deployen van een applicatie op een echt toestel, is in vergelijking met het deployen van applicaties op Android ook niet evident, ook al vergt dit slechts een eenmalige configuratie per applicatie\cite{weimenglee2009}.
+
+
+\subsection{Implementatie}
+
+\subsubsection{Model-View-Controller}
+
+Zoals vele moderne systemen hanteren zowel iOS als Android de Model-View-Controller (MVC) filosofie. MVC tracht de applicatielogica, de schermrepresentatie en de manier waarop het model op gebruikersinput reageert te ontkoppelen\cite{gamma1995}. Een interessant punt van vergelijking is hoe dit wordt vertaald in praktijk.
+
+In Android kan het model gezien worden als een verzameling Java-klasses. De views komen overeen met XML-files en staan los van het model. De controllers worden ge\"implementeerd als Android Activity en Service subklassen. Deze voorzien de achterliggende functionaliteit van de controls in de userinterface en spreken het model aan. Het blijkt echter dat de loose coupling bekomen tussen controller en view in Activity-klassen niet altijd evident is\cite{therealjoshua2011}.
+
+De MVC structuur in iOS is gelijkaardig. Storyboard- en/of XIB-files defini\"eren de view, ViewController-subklassen vormen de controllers in combinatie met onder meer delegates\cite{goadrich2011}. De communicatie vindt plaats door middel van outlets. De controller plaatst een 'target' op zichzelf en de view stuurt 'actions' naar de targetcontroller\cite{stanford2011}. Het model kan ge\"implementeerd worden als Objective-C-klassen. Het iOS Core Data framework biedt een goede ondersteuning van model-gerelateerde code\cite{apple2013coredata}.
+
+In beide gevallen kent de view de controller, en in beide gevallen wordt er ook een referentie naar de view in de controller bijgehouden\cite{apple2013uiviewcontroller},\cite{android2013activity}. De 'controllers' zoals ze in deze tekst zijn geclassificeerd, ondersteunen dus geen 'pure' loose coupling. In het ideale geval zou dezelfde controller meerdere views zou kunnen ondersteunen.
+
+
+\subsubsection{User interface design}
+
+Het design van de layout van een user-interface in Android gebeurt aan de hand van XML files\cite{android2013ui}. In Eclipse kunnen elementen zowel via een drag-and-drop-systeem als via een teksteditor worden toegevoegd\cite{goadrich2011}.
+
+Een van de features van XCode zijn de storyboards. Deze vormen een goed visueel overzicht van de applicatie in termen van de sequenties en layouts van schermen. Hierin kunnen elementen aan elk scherm worden toegevoegd via een drag-and-drop-systeem, maar in tegenstelling tot de Android Eclipse plugin is het editeren van de achterliggende XML-structuur minder transparant.
+
+
+% SECTION
+\section{Overzicht}\label{section:overzicht_technologieen}
+
+Tabel \ref{tab:comparison} geeft een overzicht van de besproken properties van iOS en Android in sectie \ref{section:properties_technologieen}.
+
+\begin{table}[h]
+\caption{Vergelijking tussen iOS en Android development}
+\begin{center}
+	\begin{tabular}{ l l || p{100px} p{100px} }
+		\hline
+									&								& \textbf{Android} 											& \textbf{iOS} \\
+		\hline
+		\hline
+		Ondersteuning & IDE						&	\textit{Compatibel met de meeste platformen.}	& \textit{Enkel voor Mac OS, snelle simulator.} \\
+									& Leerproces		&	\textit{Veel online bronnen en fora.} 				& \textit{Idem.} \\
+									& Distributie		&	\textit{Goedkoop, relatief eenvoudig.} 				& \textit{Relatief duur, vergt wat configuratie.} \\
+		\hline
+		Implementatie & MVC						& \textit{Ondersteund, al is de loose coupling tussen controller en view niet altijd even transparant.} & \textit{Ondersteund.} \\
+									& GUI design		& \textit{D\&D, XML-editor}											& \textit{D\&D, minder transparant, uniformiteit wordt meer afgedwongen} \\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tab:comparison}
+\end{table}
+
+% tabel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
